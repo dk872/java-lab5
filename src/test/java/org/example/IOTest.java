@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IOTest {
 
     @Test
-    void testFindLineWithMaxWords_basic() {
+    void testFindLineWithMaxWordsBasic() {
         List<String> lines = List.of(
                 "Hello world",
                 "This is a line with seven words",
@@ -23,7 +23,7 @@ public class IOTest {
     }
 
     @Test
-    void testFindLineWithMaxWords_emptyFile() {
+    void testFindLineWithMaxWordsEmptyFile() {
         List<String> lines = List.of();
         MaxWordsLine res = TextProcessor.findLineWithMaxWords(lines);
 
@@ -47,7 +47,7 @@ public class IOTest {
     }
 
     @Test
-    void testEncryptDecryptStream_roundtrip() throws Exception {
+    void testEncryptDecryptStreamRoundTrip() throws Exception {
         File in = File.createTempFile("int", ".txt");
         File enc = File.createTempFile("enc", ".bin");
         File dec = File.createTempFile("dec", ".txt");
@@ -68,7 +68,7 @@ public class IOTest {
     }
 
     @Test
-    void testEncryptDecryptStream_wrongKey() throws Exception {
+    void testEncryptDecryptStreamWrongKey() throws Exception {
         File in = File.createTempFile("in2", ".txt");
         File enc = File.createTempFile("enc2", ".bin");
         File dec = File.createTempFile("dec2", ".txt");
@@ -90,7 +90,7 @@ public class IOTest {
     }
 
     @Test
-    void testCryptoFilterWriterReader_roundtrip() throws Exception {
+    void testCryptoFilterWriterReaderRoundTrip() throws Exception {
         File tmp = File.createTempFile("crypto", ".txt");
         tmp.deleteOnExit();
 
@@ -101,7 +101,7 @@ public class IOTest {
     }
 
     @Test
-    void testCryptoFilterWriterReader_emptyText() throws Exception {
+    void testCryptoFilterWriterReaderEmptyText() throws Exception {
         File tmp = File.createTempFile("crypto2", ".txt");
         tmp.deleteOnExit();
 
@@ -112,7 +112,7 @@ public class IOTest {
     }
 
     @Test
-    void testTagCounter_sortedByName() {
+    void testTagCounterSortedByName() {
         Map<String, Integer> freq = new HashMap<>();
         freq.put("div", 3);
         freq.put("a", 5);
@@ -125,7 +125,7 @@ public class IOTest {
     }
 
     @Test
-    void testTagCounter_sortedByFrequency() {
+    void testTagCounterSortedByFrequency() {
         Map<String, Integer> freq = new HashMap<>();
         freq.put("x", 5);
         freq.put("y", 2);
@@ -137,7 +137,7 @@ public class IOTest {
     }
 
     @Test
-    void testFindLineWithMaxWords_ties() {
+    void testFindLineWithMaxWordsTies() {
         List<String> lines = List.of(
                 "one two three",
                 "four five six",
@@ -151,7 +151,7 @@ public class IOTest {
     }
 
     @Test
-    void testFindLineWithMaxWords_spacesAndSpecialChars() {
+    void testFindLineWithMaxWordsSpacesAndSpecialChars() {
         List<String> lines = List.of(
                 "    ",
                 "\t\t",
@@ -166,7 +166,7 @@ public class IOTest {
     }
 
     @Test
-    void testEncryptFile_emptyKey_throws() throws IOException {
+    void testEncryptFileEmptyKey() throws IOException {
         File input = File.createTempFile("test", ".txt");
         File output = File.createTempFile("out", ".bin");
         input.deleteOnExit();
@@ -180,7 +180,7 @@ public class IOTest {
     }
 
     @Test
-    void testEncryptFile_nullKey_throws() throws IOException {
+    void testEncryptFileNullKey() throws IOException {
         File input = File.createTempFile("test", ".txt");
         File output = File.createTempFile("out", ".bin");
         input.deleteOnExit();
@@ -192,7 +192,7 @@ public class IOTest {
     }
 
     @Test
-    void testWriteEncryptedText_emptyKey_throws() throws IOException {
+    void testWriteEncryptedTextEmptyKey() throws IOException {
         File output = File.createTempFile("crypto", ".txt");
         output.deleteOnExit();
 
@@ -204,7 +204,7 @@ public class IOTest {
     }
 
     @Test
-    void testWriteEncryptedText_nullKey_throws() throws IOException {
+    void testWriteEncryptedTextNullKey() throws IOException {
         File output = File.createTempFile("crypto", ".txt");
         output.deleteOnExit();
 
