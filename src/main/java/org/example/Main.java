@@ -30,6 +30,9 @@ public class Main {
                     case "5":
                         doFilterWriterDemo();
                         break;
+                    case "6":
+                        doDeserializeObject();
+                        break;
                     case "0":
                         break label;
                     default:
@@ -50,6 +53,7 @@ public class Main {
         System.out.println("3) Decrypt file (byte-stream)");
         System.out.println("4) Count HTML tags by URL and print sorted results");
         System.out.println("5) Demo FilterWriter/Reader encryption");
+        System.out.println("6) Deserialize object from file");
         System.out.println("0) Exit");
         System.out.print("> ");
     }
@@ -146,5 +150,18 @@ public class Main {
         System.out.println("Now read back via CryptoFilterReader (decrypt):");
         String decrypted = FileManager.readEncryptedText(demoOutputFile, keyString);
         System.out.println("Decrypted content: " + decrypted);
+    }
+
+    private static void doDeserializeObject() throws Exception {
+        System.out.print("Enter input file path for deserialization: ");
+        File inputFile = new File(scanner.nextLine().trim());
+        if (!inputFile.exists()) {
+            throw new FileNotFoundException("File not found: " + inputFile.getAbsolutePath());
+        }
+
+        Object deserializedObject = FileManager.deserializeObject(inputFile);
+        System.out.println("Deserialized object successfully.");
+        System.out.println("Object class: " + deserializedObject.getClass().getName());
+        System.out.println("Object data: " + deserializedObject);
     }
 }
